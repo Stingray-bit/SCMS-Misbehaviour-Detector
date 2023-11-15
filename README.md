@@ -17,6 +17,66 @@ This project developed a data-driven simulation platform to process real-world v
 In order to run the code, navigate to `Main.py`, then adjust the misbehaviour percentage to your liking. It is set as 0.5 by default. If you would like to spoof certain fields to see the consequences, adjust the field dict. BSM class diagram shown below. Right now, the file is configured for testing of detection times. To execute the project, run `Main.py`.
 
 **BSM Class Diagram:**
-
+```
+EventMsg
+│
+├── eventMsgSeqNum (int)
+│
+└── BsmRecord
+    │
+    ├── MsgHeader
+    │   ├── myRFLevel (int)
+    │   └── authenticated (bool)
+    │
+    └── BsmMsg
+        │
+        ├── CoreData
+        │   ├── msgCnt (int)
+        │   ├── id (str)
+        │   ├── accuracy
+        │   │   ├── semiMajor (int)
+        │   │   ├── semiMinor (int)
+        │   │   └── orientation (int)
+        │   ├── transmission (str)
+        │   ├── angle (int)
+        │   ├── accelSet
+        │   │   ├── long_mpss (float)
+        │   │   ├── lat_mpss (float)
+        │   │   ├── vert_mpss (float)
+        │   │   └── yaw_dps (float)
+        │   ├── brakes
+        │   │   ├── wheelBrakes (str)
+        │   │   ├── traction (str)
+        │   │   ├── abs (str)
+        │   │   ├── scs (str)
+        │   │   ├── brakeBoost (str)
+        │   │   └── auxBrakes (str)
+        │   ├── size
+        │   │   ├── width (int)
+        │   │   └── length (int)
+        │   ├── X_m (float)
+        │   ├── Y_m (float)
+        │   ├── Z_m (float)
+        │   ├── T_s (float)
+        │   ├── speed_mps (int)
+        │   └── heading_deg (float)
+        │
+        └── PartII (list of PartII objects)
+            ├── partII_Id (int)
+            └── partII_Value
+                ├── classification (int, optional)
+                ├── vehicleData
+                │   ├── height (int, optional)
+                │   └── mass (int, optional)
+                ├── pathHistory
+                │   └── crumbData (list of CrumbData objects)
+                │       ├── xOffset_m (float)
+                │       ├── yOffset_m (float)
+                │       ├── zOffset_m (float)
+                │       └── tOffset_s (float)
+                └── pathPrediction
+                    ├── radiusOfCurve (int, optional)
+                    └── confidence (int, optional)
+```
 
 
